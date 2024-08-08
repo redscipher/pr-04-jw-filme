@@ -48,6 +48,9 @@ module.exports = function(grunt){
         },
         watch: {
             dev: {
+                options: {
+                    atBegin: true
+                },
                 files: ['./src/less/**/*.less', './src/html/**/*.html'],
                 tasks: ['concurrent:dev']
             }

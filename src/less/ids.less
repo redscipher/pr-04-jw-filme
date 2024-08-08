@@ -1,0 +1,31 @@
+// importacoes
+@import './configs/variaveis.less';
+
+// ids
+#lista-nav{
+    background-color: @corTexto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    // margens
+    border-radius: 2px;
+    padding: 4px;
+    margin: 24px 20%;
+
+    // 
+    li{
+        width: 50%;
+
+        // 
+        button{
+            color: @corFundo;
+            padding: 12px;
+            width: 100%;
+    
+            // 
+            &.active{
+                background-color: @corFundoBotao;
+            }
+        }
+    }
+}

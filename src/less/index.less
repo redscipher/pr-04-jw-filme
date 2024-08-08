@@ -1,3 +1,23 @@
+// importacoes
+@import './configs/variaveis.less';
+
+// resete
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+// elementos
 body{
-    background-color: gray;
+    background-color: @corFundo;
+}
+
+// responsividades
+@media (max-width: 767px){
+    picture{
+        img{
+            width: 100vw;
+        }
+    }
 }
