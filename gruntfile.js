@@ -1,6 +1,6 @@
 // inicia grunt
 module.exports = function(grunt){
-    // importacoes 
+    // importacoes tarefas
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-concurrent');
@@ -9,6 +9,7 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-contrib-imagemin');
     
     // configuracoes
     grunt.initConfig({
@@ -75,6 +76,10 @@ module.exports = function(grunt){
                     {
                        match: '" src="../js/index.js"',
                        replacement: '" src="./js/index.min.js"' 
+                    },
+                    {
+                        match: '" src="../../imagens',
+                        replacement: '" src="./imagens'
                     }]
                 },
                 files: [{
@@ -94,6 +99,19 @@ module.exports = function(grunt){
             }
         },
         clean: ['./prebuild'],
+        imagemin:{
+            dist: {
+                options:{
+                    optimizationLevel: 3,
+                    svgoPlugins: [{removeViewBox: false}]
+                },
+                files: [{
+                    expand: true,
+                    src: ['./imagens/**/*.{png,jpg,gif}'],
+                    dest: './build/dist'
+                }]
+            }
+        },
         concurrent: {
             dev: {
                 // 'sass:dev'
@@ -101,7 +119,7 @@ module.exports = function(grunt){
             },
             dist: {
                 // 'sass:dist'
-                target: ['less:dist', 'replace:dist', 'uglify']
+                target: ['less:dist', 'replace:dist', 'uglify', 'imagemin:dist']
             }
         }
     });

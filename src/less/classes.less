@@ -21,3 +21,41 @@
     width: 100%;
     margin: 40px 40px;
 }
+
+.rodape{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: center;
+    width: 100%;
+
+    // 
+    &__lista{
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: start;
+        color: @corTexto;
+        margin-top: 32px;
+        width: 100%;
+
+        // 
+        &__item{
+            margin: 8px 8px;
+        }
+    }
+
+    &__direitos{
+        width: 70%;
+        margin-left: 15%;
+        margin-right: 15%;
+
+        // responsividade
+        @media (max-width:767px){
+            margin-left: 10%;
+            margin-right: 10%;
+        }
+    }
+}
